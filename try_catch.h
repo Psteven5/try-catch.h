@@ -4,7 +4,6 @@
 #include <setjmp.h
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdnoreturn.h>
 
 #ifndef thread_local
 #       if !defined(__STDC_NO_THREADS__)
@@ -64,7 +63,7 @@ extern thread_local const char *try_catch__type;
 extern thread_local const char *try_catch__file;
 extern thread_local int try_catch__line;
 
-noreturn static inline void try_catch__throw();
+extern void try_catch__throw();
 
 #ifdef TRY_CATCH_IMPLEMENTATION
         thread_local struct try_catch__env *try_catch__envs = NULL;
@@ -73,16 +72,16 @@ noreturn static inline void try_catch__throw();
         thread_local const char *try_catch__file;
         thread_local int try_catch__line;
 
-        noreturn static inline void try_catch__throw()
+        void try_catch__throw()
         {
-                if (NULL == try_catch__envs) {
-                        fprintf(stderr, “Uncaught exception of type %s, file %s, line %d\n”,
-                                try_catch__type, try_catch__file, try_catch__line);
-                        abort();
+                if (NULL != try_catch__envs) {
+                        struct try_catch__env *const try_catch__env = try_catch__envs;
+                        try_catch__envs = try_catch__envs->prev;
+                        longjmp(try_catch__env->buf, 0);
                 }
-                struct try_catch__env *const try_catch__env = try_catch__envs;
-                try_catch__envs = try_catch__envs->prev;
-                longjmp(try_catch__env->buf, 0);
+                fprintf(stderr, “Uncaught exception of type %s, file %s, line %d\n”,
+                        try_catch__type, try_catch__file, try_catch__line);
+                abort();
         }
 #endif
 
