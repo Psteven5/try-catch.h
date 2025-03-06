@@ -1,4 +1,4 @@
-# try_catch.h
+# try-catch.h
 Simple jmp_buf-based try-catch in C
 
 # Install
