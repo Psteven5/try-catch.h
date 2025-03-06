@@ -1,3 +1,4 @@
+#define TRY_CATCH_IMPLEMENTATION
 #include "try_catch.h"
 
 int main(void)
