@@ -50,7 +50,7 @@
         E e = *(E *)try_catch__buf;
 /* TRY_CATCH__CATCH_2 */
 
-#define TRY_CATCH__CATCH_N(E, e, macro, …) macro
+#define TRY_CATCH__CATCH_N(E, e, macro, ...) macro
 /* TRY_CATCH__CATCH_N */
 
 #define CATCH(...) TRY_CATCH__CATCH_N(__VA_ARGS__, TRY_CATCH__CATCH_2, TRY_CATCH__CATCH_1)(__VA_ARGS__)
