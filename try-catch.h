@@ -60,7 +60,7 @@
         if (NULL == try_catch__type) \
                 try_catch__envs = try_catch__envs->prev; \
         try_catch__type = NULL; \
-} while (0)
+} while (0);
 /* END_TRY */
 
 extern thread_local struct try_catch__env {
