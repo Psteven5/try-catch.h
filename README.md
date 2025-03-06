@@ -6,4 +6,4 @@ This is an STB-style single-header library, so simply include the header file, a
 ```
 #define TRY_CATCH_IMPLEMENTATION
 ```
-before including.
+before including to include the implementation as well (mostly internal state).
