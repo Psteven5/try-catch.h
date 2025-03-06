@@ -18,10 +18,12 @@
 #               define thread_local
 #       endif
 #endif
+/* thread_local */
 
 #ifndef TRY_CATCH_BUFSIZ
 #       define TRY_CATCH_BUFSIZ BUFSIZ
 #endif
+/* TRY_CATCH_BUFSIZ */
 
 #define TRY do { \
         struct try_catch__env try_catch__env = { \
@@ -29,6 +31,7 @@
         }; \
         try_catch__envs = &try_catch__env; \
         if (0 == setjmp(try_catch__env.buf)) {
+/* TRY */
 
 #define THROW(E, …) do { \
         *(E *)try_catch__buf = (E) __VA_ARGS__; \
@@ -37,22 +40,28 @@
         try_catch__line = __LINE__; \
         try_catch__throw(); \
 } while (0)
+/* THROW */
 
 #define TRY_CATCH__CATCH_1(e) } else if (NULL != try_catch__type) { \
         const char *const e = try_catch__type;
+/* TRY_CATCH__CATCH_1 */
 
 #define TRY_CATCH__CATCH_2(E, e) } else if (#E == try_catch__type) { \
         E e = *(E *)try_catch__buf;
+/* TRY_CATCH__CATCH_2 */
 
 #define TRY_CATCH__CATCH_N(E, e, macro, …) macro
+/* TRY_CATCH__CATCH_N */
 
 #define CATCH(...) TRY_CATCH__CATCH_N(__VA_ARGS__, TRY_CATCH__CATCH_2, TRY_CATCH__CATCH_1)(__VA_ARGS__)
+/* CATCH */
 
 #define END_TRY } else try_catch__throw(); \
         if (NULL == try_catch__type) \
                 try_catch__envs = try_catch__envs->prev; \
         try_catch__type = NULL; \
 } while (0)
+/* END_TRY */
 
 extern thread_local struct try_catch__env {
         jmp_buf buf;
@@ -84,5 +93,7 @@ extern void try_catch__throw();
                 abort();
         }
 #endif
+/* TRY_CATCH_IMPLEMENTATION */
 
 #endif
+/* TRY_CATCH__H */
