@@ -7,7 +7,7 @@
 
 #ifndef thread_local
 #       if !defined(__STDC_NO_THREADS__)
-#               include <thread.h>
+#               include <threads.h>
 #       elif 201100 <= __STDC_VERSION__
 #               define thread_local _Thread_local
 #       elif defined(_MSC_VER)
