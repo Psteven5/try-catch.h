@@ -33,7 +33,7 @@
         if (0 == setjmp(try_catch__env.buf)) {
 /* TRY */
 
-#define THROW(E, …) do { \
+#define THROW(E, ...) do { \
         *(E *)try_catch__buf = (E) __VA_ARGS__; \
         try_catch__type = #E; \
         try_catch__file = __FILE__; \
