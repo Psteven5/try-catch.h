@@ -64,7 +64,7 @@ extern thread_local const char *try_catch__type;
 extern thread_local const char *try_catch__file;
 extern thread_local int try_catch__line;
 
-noreturn inline static void try_catch__throw();
+noreturn static inline void try_catch__throw();
 
 #ifdef TRY_CATCH_IMPLEMENTATION
         thread_local struct try_catch__env *try_catch__envs = NULL;
@@ -73,7 +73,7 @@ noreturn inline static void try_catch__throw();
         thread_local const char *try_catch__file;
         thread_local int try_catch__line;
 
-        noreturn inline static void try_catch__throw()
+        noreturn static inline void try_catch__throw()
         {
                 if (NULL == try_catch__envs) {
                         fprintf(stderr, “Uncaught exception of type %s, file %s, line %d\n”,
