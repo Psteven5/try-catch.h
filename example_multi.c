@@ -10,4 +10,5 @@ int main(void)
         CATCH(T)
                 printf("%s\n", T);
         END_TRY
+        return 0;
 }
