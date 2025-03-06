@@ -4,5 +4,5 @@
 int main(void)
 {
         THROW(int, 42);
-        return 0;
+        return EXIT_SUCCESS;
 }
