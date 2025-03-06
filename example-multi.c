@@ -1,5 +1,5 @@
 #define TRY_CATCH_IMPLEMENTATION
-#include "try_catch.h"
+#include "try-catch.h"
 
 int main(void)
 {
