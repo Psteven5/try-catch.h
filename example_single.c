@@ -8,4 +8,5 @@ int main(void)
         CATCH(int, i)
                 printf("%d\n", i);
         END_TRY
+        return EXIT_SUCCESS;
 }
