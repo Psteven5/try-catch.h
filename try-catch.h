@@ -88,7 +88,7 @@ extern void try_catch__throw();
                         try_catch__envs = try_catch__envs->prev;
                         longjmp(try_catch__env->buf, 0);
                 }
-                fprintf(stderr, “Uncaught exception of type %s, file %s, line %d\n”,
+                fprintf(stderr, "Uncaught exception of type %s, file %s, line %d\n",
                         try_catch__type, try_catch__file, try_catch__line);
                 abort();
         }
