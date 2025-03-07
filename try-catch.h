@@ -72,7 +72,7 @@ extern thread_local const char *try_catch__type;
 extern thread_local const char *try_catch__file;
 extern thread_local int try_catch__line;
 
-extern void try_catch__throw();
+extern void try_catch__throw(void);
 
 #ifdef TRY_CATCH_IMPLEMENTATION
         thread_local struct try_catch__env *try_catch__envs = NULL;
@@ -81,7 +81,7 @@ extern void try_catch__throw();
         thread_local const char *try_catch__file;
         thread_local int try_catch__line;
 
-        void try_catch__throw()
+        void try_catch__throw(void)
         {
                 if (NULL != try_catch__envs) {
                         struct try_catch__env *const try_catch__env = try_catch__envs;
